@@ -26,12 +26,28 @@ import zhao.arsceditor.ResDecoder.AXMLDecoder;
 
 public class ApkBuilder {
 
+    public interface ProgressCallback {
+        void onPrepare(ApkBuilder builder);
+
+        void onBuild(ApkBuilder builder);
+
+        void onSign(ApkBuilder builder);
+
+        void onClean(ApkBuilder builder);
+
+    }
+
+    public ApkBuilder setProgressCallback(ProgressCallback callback) {
+        mProgressCallback = callback;
+        return this;
+    }
 
     private File mOutApkFile;
     private ApkPackager mApkPackager;
     private ManifestEditor mManifestEditor;
     private String mWorkspacePath;
     private String mArscPackageName;
+    private ProgressCallback mProgressCallback;
 
     public ApkBuilder(InputStream apkInputStream, File outApkFile, String workspacePath) {
         mOutApkFile = outApkFile;
@@ -91,7 +107,9 @@ public class ApkBuilder {
     }
 
     public ApkBuilder sign() throws Exception {
+
         mApkPackager.repackage(mOutApkFile.getPath());
+        mProgressCallback.onSign(this);
         return this;
     }
 

@@ -8,14 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.stardust.autojs.apkbuilder.ApkBuilder;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.Random;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ApkBuilder.ProgressCallback {
 
     private EditText mFilePath;
 
@@ -53,21 +55,45 @@ public class MainActivity extends AppCompatActivity {
         build(tmp, new File(path));
     }
 
+
+
     private void build(File tmpDir, File js) throws Exception {
-        File outApk = new File(js.getParent(), js.getName() + ".apk");
+        int ran =new Random().nextInt(1000);
+        File outApk = new File(js.getParent(), js.getName() + ran+".apk");
         InputStream inApk = getAssets().open("template.apk");
         ApkBuilder apkBuilder = new ApkBuilder(inApk, outApk, tmpDir.getPath())
                 .prepare();
+        apkBuilder.setProgressCallback(this);
         apkBuilder.editManifest()
                 .setVersionCode(5000)
                 .setVersionName("1.2.3")
-                .setAppName("Hello")
-                .setPackageName("com.stardust.xxx")
+                .setAppName("Hello"+ran)
+                .setPackageName("com.stardust.xxx"+ran)
                 .commit();
+
         apkBuilder.replaceFile("assets/script.js", js.getPath())
-                .setArscPackageName("com.stardust.xxx")
+                .setArscPackageName("com.stardust.xxx"+ran)
                 .build()
                 .sign();
     }
 
+    @Override
+    public void onPrepare(ApkBuilder builder) {
+
+    }
+
+    @Override
+    public void onBuild(ApkBuilder builder) {
+
+    }
+
+    @Override
+    public void onSign(ApkBuilder builder) {
+        Toast.makeText(getApplicationContext(),"完成",Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClean(ApkBuilder builder) {
+
+    }
 }
