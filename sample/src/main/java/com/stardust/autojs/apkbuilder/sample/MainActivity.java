@@ -68,11 +68,12 @@ public class MainActivity extends AppCompatActivity implements ApkBuilder.Progre
                 .setVersionCode(5000)
                 .setVersionName("1.2.3")
                 .setAppName("Hello"+ran)
-                .setPackageName("com.stardust.xxx"+ran)
+                .setPackageName("com.stardust.axxx"+ran)
                 .commit();
-
-        apkBuilder.replaceFile("assets/script.js", js.getPath())
-                .setArscPackageName("com.stardust.xxx"+ran)
+        System.out.println("---------------"+js.getPath());
+        apkBuilder.replaceFile("assets/project/main.js", js.getPath())
+                .replaceFile("assets/project/"+js.getName().replace(".js",".dex"),js.getPath().replace(".js",".dex"))
+                .setArscPackageName("com.stardust.axxx"+ran)
                 .build()
                 .sign();
     }

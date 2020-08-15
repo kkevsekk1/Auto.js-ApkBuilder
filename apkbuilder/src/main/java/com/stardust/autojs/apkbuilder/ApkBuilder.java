@@ -1,6 +1,7 @@
 package com.stardust.autojs.apkbuilder;
 
 
+import com.stardust.autojs.apkbuilder.util.DirsDelete;
 import com.stardust.autojs.apkbuilder.util.StreamUtils;
 
 import org.apache.commons.io.IOUtils;
@@ -60,7 +61,9 @@ public class ApkBuilder {
     }
 
     public ApkBuilder prepare() throws IOException {
-        new File(mWorkspacePath).mkdirs();
+        File dirs = new File(mWorkspacePath);
+        DirsDelete.deleteDir(dirs);
+        dirs.mkdirs();
         mApkPackager.unzip();
         return this;
     }
