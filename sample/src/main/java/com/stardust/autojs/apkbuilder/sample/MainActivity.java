@@ -56,10 +56,9 @@ public class MainActivity extends AppCompatActivity implements ApkBuilder.Progre
     }
 
 
-
     private void build(File tmpDir, File js) throws Exception {
-        int ran =new Random().nextInt(1000);
-        File outApk = new File(js.getParent(), js.getName() + ran+".apk");
+        int ran = new Random().nextInt(1000);
+        File outApk = new File(js.getParent(), js.getName() + ran + ".apk");
         InputStream inApk = getAssets().open("template.apk");
         ApkBuilder apkBuilder = new ApkBuilder(inApk, outApk, tmpDir.getPath())
                 .prepare();
@@ -67,13 +66,12 @@ public class MainActivity extends AppCompatActivity implements ApkBuilder.Progre
         apkBuilder.editManifest()
                 .setVersionCode(5000)
                 .setVersionName("1.2.3")
-                .setAppName("Hello"+ran)
-                .setPackageName("com.stardust.axxx"+ran)
+                .setAppName("Hello" + ran)
+                .setPackageName("com.stardust.axxx" + ran)
                 .commit();
-        System.out.println("---------------"+js.getPath());
+        System.out.println("---------------" + js.getPath());
         apkBuilder.replaceFile("assets/project/main.js", js.getPath())
-                .replaceFile("assets/project/"+js.getName().replace(".js",".dex"),js.getPath().replace(".js",".dex"))
-                .setArscPackageName("com.stardust.axxx"+ran)
+                .setArscPackageName("com.stardust.axxx" + ran)
                 .build()
                 .sign();
     }
@@ -90,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements ApkBuilder.Progre
 
     @Override
     public void onSign(ApkBuilder builder) {
-        Toast.makeText(getApplicationContext(),"完成",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "完成", Toast.LENGTH_SHORT).show();
     }
 
     @Override

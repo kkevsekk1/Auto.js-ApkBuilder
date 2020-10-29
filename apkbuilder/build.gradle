@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 23
+        minSdkVersion 17
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -24,11 +24,11 @@ android {
 }
 
 dependencies {
-    implementation files('lib/commons-io-2.5.jar', 'lib/tiny-sign-0.9.jar')
-    implementation ('commons-codec:commons-codec:1.9')
+    implementation files('libs/commons-io-2.5.jar', 'libs/tiny-sign-0.9.jar')
+    implementation ('commons-codec:commons-codec:1.10')
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
 
 }
