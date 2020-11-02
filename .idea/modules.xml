@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ApkBuilder.iml" filepath="$PROJECT_DIR$/.idea/modules/ApkBuilder.iml" group="ApkBuilder" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/apkbuilder/ApkBuilder-apkbuilder.iml" filepath="$PROJECT_DIR$/.idea/modules/apkbuilder/ApkBuilder-apkbuilder.iml" group="ApkBuilder/apkbuilder" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample/ApkBuilder-sample.iml" filepath="$PROJECT_DIR$/.idea/modules/sample/ApkBuilder-sample.iml" group="ApkBuilder/sample" />
-      <module fileurl="file://$PROJECT_DIR$/Auto.js-ApkBuilder.iml" filepath="$PROJECT_DIR$/Auto.js-ApkBuilder.iml" />
-      <module fileurl="file://C:/Users/Stardust/Documents/AndroidProjects/ApkBuilder/AutoJs-ApkBuilder.iml" filepath="C:/Users/Stardust/Documents/AndroidProjects/ApkBuilder/AutoJs-ApkBuilder.iml" />
-      <module fileurl="file://$PROJECT_DIR$/apkbuilder/apkbuilder.iml" filepath="$PROJECT_DIR$/apkbuilder/apkbuilder.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/apkbuilder/studoworkspace-ApkBuilder-apkbuilder.iml" filepath="$PROJECT_DIR$/.idea/modules/apkbuilder/studoworkspace-ApkBuilder-apkbuilder.iml" group="ApkBuilder/apkbuilder" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample/studoworkspace-ApkBuilder-sample.iml" filepath="$PROJECT_DIR$/.idea/modules/sample/studoworkspace-ApkBuilder-sample.iml" group="ApkBuilder/sample" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/apkbuilder/Auto.js-ApkBuilder.apkbuilder.iml" filepath="$PROJECT_DIR$/.idea/modules/apkbuilder/Auto.js-ApkBuilder.apkbuilder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample/Auto.js-ApkBuilder.sample.iml" filepath="$PROJECT_DIR$/.idea/modules/sample/Auto.js-ApkBuilder.sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/studoworkspace.Auto.js-ApkBuilder.iml" filepath="$PROJECT_DIR$/.idea/modules/studoworkspace.Auto.js-ApkBuilder.iml" />
     </modules>
   </component>
 </project>
