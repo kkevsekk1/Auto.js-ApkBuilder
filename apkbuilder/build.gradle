@@ -1,5 +1,23 @@
-apply plugin: 'com.android.library'
+import java.nio.charset.Charset
 
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+Properties properties = new Properties()
+properties.load(new InputStreamReader(new FileInputStream("E:/资料/jks/apkbuilder/sign.properties"), Charset.forName("utf-8")))
+
+ext {
+    // BUILD_TYPE="release"
+    BUILD_TYPE = "debug"
+    SDK_GROUP_ID = "org.signal.autox"
+    SDK_ARTIFACT_ID = "apkbuilder"
+    SDK_TYPE = "aar"
+    SDK_VERSION = "1.0.1"
+    SDK_VERSION_NAME_SNAPSHOT = "1.0.1-SNAPSHOT"
+    MAVEN_USER_NAME = properties["MAVEN_USER_NAME"]
+    MAVEN_PWD = properties["MAVEN_PWD"]
+
+}
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -8,8 +26,7 @@ android {
         minSdkVersion 17
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
-
+        versionName SDK_VERSION
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
@@ -21,13 +38,36 @@ android {
 
         }
     }
-
-
 }
 
+uploadArchives {
+    repositories.mavenDeployer {
+        println "start upload aar build type:" + BUILD_TYPE
+        name = 'mavenCentralReleaseDeployer'
+        if (BUILD_TYPE.equals("release")) {
+            println "uploadArchives build release"
+            repository(url: MAVEN_URL) {
+                authentication(userName: MAVEN_USER_NAME, password: MAVEN_PWD)
+            }
+            pom.version = SDK_VERSION
+        } else {
+            println "uploadArchives build beta"
+            snapshotRepository(url: MAVEN_URL_SNAPSHOT) {
+                authentication(userName: MAVEN_USER_NAME, password: MAVEN_PWD)
+            }
+            pom.version = SDK_VERSION_NAME_SNAPSHOT
+        }
+        pom.artifactId = SDK_ARTIFACT_ID
+        pom.groupId = SDK_GROUP_ID
+        pom.packaging = SDK_TYPE
+        doLast {
+            println "upload aar success build type:" + BUILD_TYPE
+        }
+    }
+}
 dependencies {
     implementation files('libs/commons-io-2.5.jar', 'libs/tiny-sign-0.9.jar')
-    implementation ('commons-codec:commons-codec:1.10')
+    implementation('commons-codec:commons-codec:1.10')
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
