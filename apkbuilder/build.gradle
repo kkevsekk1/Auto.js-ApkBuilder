@@ -7,13 +7,13 @@ Properties properties = new Properties()
 properties.load(new InputStreamReader(new FileInputStream("E:/资料/jks/apkbuilder/sign.properties"), Charset.forName("utf-8")))
 
 ext {
-    // BUILD_TYPE="release"
-    BUILD_TYPE = "debug"
+     BUILD_TYPE="release"
+//    BUILD_TYPE = "debug"
     SDK_GROUP_ID = "org.signal.autox"
     SDK_ARTIFACT_ID = "apkbuilder"
     SDK_TYPE = "aar"
-    SDK_VERSION = "1.0.1"
-    SDK_VERSION_NAME_SNAPSHOT = "1.0.1-SNAPSHOT"
+    SDK_VERSION = "1.0.3"
+    SDK_VERSION_NAME_SNAPSHOT = "1.0.3-SNAPSHOT"
     MAVEN_USER_NAME = properties["MAVEN_USER_NAME"]
     MAVEN_PWD = properties["MAVEN_PWD"]
 

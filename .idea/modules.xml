@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Auto.js-ApkBuilder.iml" filepath="$PROJECT_DIR$/.idea/modules/Auto.js-ApkBuilder.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/apkbuilder/Auto.js-ApkBuilder.apkbuilder.iml" filepath="$PROJECT_DIR$/.idea/modules/apkbuilder/Auto.js-ApkBuilder.apkbuilder.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample/Auto.js-ApkBuilder.sample.iml" filepath="$PROJECT_DIR$/.idea/modules/sample/Auto.js-ApkBuilder.sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/studoworkspace.Auto.js-ApkBuilder.iml" filepath="$PROJECT_DIR$/.idea/modules/studoworkspace.Auto.js-ApkBuilder.iml" />
     </modules>
   </component>
 </project>

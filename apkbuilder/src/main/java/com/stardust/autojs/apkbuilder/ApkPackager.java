@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.stardust.autojs.apkbuilder.util.StreamUtils;
 
+import org.apache.commons.codec.binary.StringUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -39,8 +41,8 @@ public class ApkPackager {
         ZipInputStream zis = new ZipInputStream(mApkInputStream);
         for (ZipEntry zipEntry = zis.getNextEntry(); zipEntry != null; zipEntry = zis.getNextEntry()) {
             String name = zipEntry.getName();
-            if(zipEntry.getName().endsWith("/") || zipEntry.getName().endsWith("\\")){
-//           if (!zipEntry.isDirectory()) {
+//            if(!zipEntry.getName().endsWith("/") && !zipEntry.getName().endsWith("\\")){
+           if (!zipEntry.isDirectory()&&!TextUtils.isEmpty(name)) {
                 File file = new File(mWorkspacePath, name);
                 file.getParentFile().mkdirs();
                 FileOutputStream fos = new FileOutputStream(file);
