@@ -37,12 +37,10 @@ public class ApkPackager {
 
     public void unzip() throws IOException {
         ZipInputStream zis = new ZipInputStream(mApkInputStream);
-        for (ZipEntry e = zis.getNextEntry(); e != null; e = zis.getNextEntry()) {
-            String name = e.getName();
-            if(TextUtils.isEmpty(name)){
-                continue;
-            }
-            if (!e.isDirectory()) {
+        for (ZipEntry zipEntry = zis.getNextEntry(); zipEntry != null; zipEntry = zis.getNextEntry()) {
+            String name = zipEntry.getName();
+            if(zipEntry.getName().endsWith("/") || zipEntry.getName().endsWith("\\")){
+//           if (!zipEntry.isDirectory()) {
                 File file = new File(mWorkspacePath, name);
                 file.getParentFile().mkdirs();
                 FileOutputStream fos = new FileOutputStream(file);
